@@ -5,62 +5,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <title>Document</title>
+    <title>User signup</title>
 </head>
 
 <body>
     <%- include('../partials/sectionOpening') %>
 
-        <h2 class="fs-6 fw-normal text-center text-secondary mb-4">Enter your details to register
+        <h2 class="fs-3 fw-normal text-center text-secondary mb-4">
+            SIGNUP
         </h2>
-        <form action="#!">
+
+        <div class="text-center mb-4">
+            <button class="btn btn-secondary btn-sm me-2" onclick="window.location.href='/store/signup'">
+                Store account</button>
+            <button class="btn btn-primary btn-sm" onclick="window.location.href='/user/signup'">
+                User account</button>
+        </div>
+
+        <form>
             <div class="row gy-2 overflow-hidden">
+
                 <div class="col-12">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name"
-                            required>
-                        <label for="firstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                        <label for="name" class="form-label">Name</label>
                     </div>
                 </div>
+
                 <div class="col-12">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name"
-                            required>
-                        <label for="lastName" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" name="surname" id="surname" placeholder="Surname">
+                        <label for="surname" class="form-label">Surname</label>
                     </div>
                 </div>
+
                 <div class="col-12">
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com"
-                            required>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                        <label for="username" class="form-label">Username</label>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                         <label for="email" class="form-label">Email</label>
                     </div>
                 </div>
+
                 <div class="col-12">
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control" name="password" id="password" value=""
-                            placeholder="Password" required>
+                        <input type="password" class="form-control" name="password" id="password"
+                            placeholder="Password">
                         <label for="password" class="form-label">Password</label>
                     </div>
                 </div>
-                <div class="col-12">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" name="iAgree" id="iAgree" required>
-                        <label class="form-check-label text-secondary" for="iAgree">
-                            I agree to the <a href="#!" class="link-primary text-decoration-none">terms and
-                                conditions</a>
-                        </label>
-                    </div>
-                </div>
+
                 <div class="col-12">
                     <div class="d-grid my-3">
-                        <button class="btn btn-primary btn-lg" type="submit">Sign up</button>
+                        <button class="btn btn-primary btn-lg" type="submit">Login</button>
                     </div>
                 </div>
+
                 <div class="col-12">
-                    <p class="m-0 text-secondary text-center">Already have an account? <a href="#!"
-                            class="link-primary text-decoration-none">Sign in</a></p>
+                    <p class="m-0 text-secondary text-center">
+                        Already have an account?
+                        <a href="/user/login" class="link-primary text-decoration-none">Login</a>
+                    </p>
                 </div>
+
             </div>
         </form>
 
