@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <title>User login</title>
+    <title>Store login</title>
 </head>
 
 <body>
@@ -16,9 +16,9 @@
         </h2>
 
         <div class="text-center mb-4">
-            <button class="btn btn-secondary btn-sm me-2" onclick="window.location.href='/store/login'">
+            <button class="btn btn-primary btn-sm me-2" onclick="window.location.href='/login/store'">
                 Store account</button>
-            <button class="btn btn-primary btn-sm" onclick="window.location.href='/user/login'">
+            <button class="btn btn-secondary btn-sm" onclick="window.location.href='/login/user'">
                 User account</button>
         </div>
 
@@ -27,8 +27,9 @@
 
                 <div class="col-12">
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" name="username" id="username" placeholder="Username">
-                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" name="email" id="email" placeholder="Email">
+                        <label for="email" class="form-label">Email</label>
+                        <div class="fs-6 invalid-feedback" id="emailError"></div>
                     </div>
                 </div>
 
@@ -37,6 +38,7 @@
                         <input type="password" class="form-control" name="password" id="password"
                             placeholder="Password">
                         <label for="password" class="form-label">Password</label>
+                        <div class="fs-6 invalid-feedback" id="passwordError"></div>
                     </div>
                 </div>
 
@@ -48,7 +50,7 @@
 
                 <div class="col-12">
                     <p class="m-0 text-secondary text-center">Don't have an account?
-                        <a href="/user/signup" class="link-primary text-decoration-none">Sign up</a>
+                        <a href="/signup/store" class="link-primary text-decoration-none">Sign up</a>
                     </p>
                 </div>
             </div>

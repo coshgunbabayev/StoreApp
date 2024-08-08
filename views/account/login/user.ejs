@@ -5,20 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <title>Store signup</title>
+    <title>User login</title>
 </head>
 
 <body>
     <%- include('../partials/sectionOpening') %>
 
         <h2 class="fs-3 fw-normal text-center text-secondary mb-4">
-            SIGNUP
+            LOGIN
         </h2>
 
         <div class="text-center mb-4">
-            <button class="btn btn-primary btn-sm me-2" onclick="window.location.href='/store/signup'">
+            <button class="btn btn-secondary btn-sm me-2" onclick="window.location.href='/login/store'">
                 Store account</button>
-            <button class="btn btn-secondary btn-sm" onclick="window.location.href='/user/signup'">
+            <button class="btn btn-primary btn-sm" onclick="window.location.href='/login/user'">
                 User account</button>
         </div>
 
@@ -27,15 +27,8 @@
 
                 <div class="col-12">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Store Name">
-                        <label for="name" class="form-label">Store Name</label>
-                    </div>
-                </div>
-
-                <div class="col-12">
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
-                        <label for="email" class="form-label">Email</label>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                        <label for="username" class="form-label">Username</label>
                     </div>
                 </div>
 
@@ -49,17 +42,15 @@
 
                 <div class="col-12">
                     <div class="d-grid my-3">
-                        <button class="btn btn-primary btn-lg" type="submit">Sign up</button>
+                        <button class="btn btn-primary btn-lg" type="submit">Login</button>
                     </div>
                 </div>
 
                 <div class="col-12">
-                    <p class="m-0 text-secondary text-center">
-                        Already have an account?
-                        <a href="/store/login" class="link-primary text-decoration-none">Login</a>
+                    <p class="m-0 text-secondary text-center">Don't have an account?
+                        <a href="/signup/user" class="link-primary text-decoration-none">Sign up</a>
                     </p>
                 </div>
-                
             </div>
         </form>
 

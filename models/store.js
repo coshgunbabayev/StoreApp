@@ -3,6 +3,8 @@ import { Schema } from 'mongoose';
 import { ObjectId } from 'mongodb';
 import validator from 'validator';
 
+import { createCode } from '../tools/random.js';
+
 const storeSchema = new Schema({
     name: {
         type: String,
@@ -26,6 +28,18 @@ const storeSchema = new Schema({
         trim: true,
         minlength: [8, 'Password must be at least 8 characters long'],
         maxlength: [50, 'Password cannot be more than 50 characters long']
+    },
+
+    verification: {
+        status: {
+            type: Boolean,
+            default: false
+        },
+
+        code: {
+            type: String,
+            default: createCode(6)
+        }
     },
 
     profilePicture: {
@@ -54,7 +68,6 @@ const storeSchema = new Schema({
 
     contactNumber: {
         type: String,
-        required: true,
         trim: true,
         maxlength: [50, 'Contact number cannot be more than 50 characters long'],
         default: ''

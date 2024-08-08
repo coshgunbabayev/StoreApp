@@ -3,21 +3,35 @@ const router = new Router();
 
 import {
     getStoreSignupPage,
-    getStoreLoginPage,
     getUserSignupPage,
+    getVerificationCodePage,
+    getVerificationEmailPage,
+    getStoreLoginPage,
     getUserLoginPage
 } from '../controllers/page.js';
 
-router.route('/store/signup')
+router.route('/signup/store')
     .get(getStoreSignupPage);
 
-router.route('/store/login')
-    .get(getStoreLoginPage);
-
-router.route('/user/signup')
+router.route('/signup/user')
     .get(getUserSignupPage);
 
-router.route('/user/login')
+router.route('/verification/code/store')
+    .get(getVerificationCodePage);
+
+router.route('/verification/code/user')
+    .get(getVerificationCodePage);
+
+router.route('/verification/email/store')
+    .get(getVerificationEmailPage);
+
+router.route('/verification/email/user')
+    .get(getVerificationEmailPage);
+
+router.route('/login/store')
+    .get(getStoreLoginPage);
+
+router.route('/login/user')
     .get(getUserLoginPage);
 
 export default router

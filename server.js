@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 
 import connection from './database/connection.js';
 import pageRouter from './routers/page.js';
+import signupRouter from './routers/signup.js';
 
 dotenv.config();
 const app = express();
@@ -20,8 +21,9 @@ app.set('view engine', 'ejs');
 
 app.listen(port, function () {
     console.log(`Server is running on port ${port}`);
+    connection();
 });
 
-connection();
 
 app.use('/', pageRouter);
+app.use('/api/signup', signupRouter);
