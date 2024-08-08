@@ -2,36 +2,26 @@ import { Router } from 'express';
 const router = new Router();
 
 import {
-    getStoreSignupPage,
-    getUserSignupPage,
+    getSignupPage,
     getVerificationCodePage,
     getVerificationEmailPage,
-    getStoreLoginPage,
-    getUserLoginPage
+    getLoginPage
 } from '../controllers/page.js';
 
-router.route('/signup/store')
-    .get(getStoreSignupPage);
+import {
+    pageRole
+} from '../middlewares/role.js';
 
-router.route('/signup/user')
-    .get(getUserSignupPage);
+router.route('/signup/:role')
+    .get(pageRole, getSignupPage);
 
-router.route('/verification/code/store')
-    .get(getVerificationCodePage);
+router.route('/verification/code/:role')
+    .get(pageRole, getVerificationCodePage);
 
-router.route('/verification/code/user')
-    .get(getVerificationCodePage);
+router.route('/verification/email/:role')
+    .get(pageRole, getVerificationEmailPage);
 
-router.route('/verification/email/store')
-    .get(getVerificationEmailPage);
-
-router.route('/verification/email/user')
-    .get(getVerificationEmailPage);
-
-router.route('/login/store')
-    .get(getStoreLoginPage);
-
-router.route('/login/user')
-    .get(getUserLoginPage);
+router.route('/login/:role')
+    .get(pageRole, getLoginPage);
 
 export default router

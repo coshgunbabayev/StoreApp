@@ -1,34 +1,26 @@
-function getStoreSignupPage(req, res) {
-    res.status(200).render('account/signup/store');
-};
-
-function getUserSignupPage(req, res) {
-    res.status(200).render('account/signup/user');
+function getSignupPage(req, res) {
+    res.status(200).render(`account/signup/${req.params.role}`);
 };
 
 function getVerificationCodePage(req, res) {
     res.status(200).render('account/verification/code', {
-        userRole: req.url.split('/')[3]
+        userRole: req.params.role
     });
 };
 
 function getVerificationEmailPage(req, res) {
-    res.status(200).render('account/verification/email');
+    res.status(200).render('account/verification/email', {
+        userRole: req.params.role
+    });
 };
 
-function getStoreLoginPage(req, res) {
-    res.status(200).render('account/login/store');
-};
-
-function getUserLoginPage(req, res) {
-    res.status(200).render('account/login/user');
+function getLoginPage(req, res) {
+    res.status(200).render(`account/login/${req.params.role}`);
 };
 
 export {
-    getStoreSignupPage,
-    getUserSignupPage,
+    getSignupPage,
     getVerificationCodePage,
     getVerificationEmailPage,
-    getStoreLoginPage,
-    getUserLoginPage
+    getLoginPage,
 };
