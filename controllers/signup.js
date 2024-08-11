@@ -36,8 +36,6 @@ async function createStore(req, res) {
     } catch (err) {
         let errors = new Object();
 
-        console.log(err);
-
         if (err.name === "ValidationError") {
             Object.keys(err.errors).forEach(key => {
                 errors[key] = err.errors[key].message;

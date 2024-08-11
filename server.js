@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import connection from './database/connection.js';
 import pageRouter from './routers/page.js';
 import signupRouter from './routers/signup.js';
+import verificationRouter from './routers/verification.js';
 
 dotenv.config();
 const app = express();
@@ -24,6 +25,6 @@ app.listen(port, function () {
     connection();
 });
 
-
 app.use('/', pageRouter);
 app.use('/api/signup', signupRouter);
+app.use('/api/verification', verificationRouter);

@@ -1,6 +1,6 @@
 const roles = ['user', 'store'];
 
-function pageRole(req, res, next) {
+function roleChecking(req, res, next) {
     if (!roles.includes(req.params.role)){
         return res.status(404).send();
     };
@@ -8,6 +8,4 @@ function pageRole(req, res, next) {
     next();
 };
 
-export {
-    pageRole
-};
+export default roleChecking

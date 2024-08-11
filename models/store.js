@@ -26,8 +26,7 @@ const storeSchema = new Schema({
         type: String,
         required: [true, 'Please enter a password'],
         trim: true,
-        minlength: [8, 'Password must be at least 8 characters long'],
-        maxlength: [50, 'Password cannot be more than 50 characters long']
+        minlength: [8, 'Password must be at least 8 characters long']
     },
 
     verification: {

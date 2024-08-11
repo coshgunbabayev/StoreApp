@@ -8,20 +8,18 @@ import {
     getLoginPage
 } from '../controllers/page.js';
 
-import {
-    pageRole
-} from '../middlewares/role.js';
+import roleChecking from '../middlewares/role.js';
 
 router.route('/signup/:role')
-    .get(pageRole, getSignupPage);
+    .get(roleChecking, getSignupPage);
 
 router.route('/verification/code/:role')
-    .get(pageRole, getVerificationCodePage);
+    .get(roleChecking, getVerificationCodePage);
 
 router.route('/verification/email/:role')
-    .get(pageRole, getVerificationEmailPage);
+    .get(roleChecking, getVerificationEmailPage);
 
 router.route('/login/:role')
-    .get(pageRole, getLoginPage);
+    .get(roleChecking, getLoginPage);
 
 export default router
