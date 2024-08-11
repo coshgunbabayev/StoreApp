@@ -46,8 +46,6 @@ document.getElementById('form').addEventListener('submit', async function (event
     } else {
         res = await res.json();
 
-        console.log(res);
-
         switch (path) {
             case '/signup/store':
             case '/signup/user':
@@ -57,14 +55,22 @@ document.getElementById('form').addEventListener('submit', async function (event
                 break;
             case '/verification/code/store':
                 if (res.message) {
-                    alert(res.message);
+                    if (res.message === 'TokenError') {
+                        window.location.href = '/verification/email/store';
+                    } else if (res.message === 'UserVerified') {
+                        window.location.href = '/login/store';
+                    };
                 } else if (res.errors) {
                     setErrors(res.errors);
                 };
                 break;
             case '/verification/code/user':
                 if (res.message) {
-                    alert(res.message);
+                    if (res.message === 'TokenError') {
+                        window.location.href = '/verification/email/user';
+                    } else if (res.message === 'UserVerified') {
+                        window.location.href = '/login/user';
+                    };
                 } else if (res.errors) {
                     setErrors(res.errors);
                 };
