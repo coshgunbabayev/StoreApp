@@ -4,8 +4,8 @@ import User from '../models/user.js';
 import Store from '../models/store.js';
 
 async function verificationCode(req, res) {
-    const role = req.params.role;
-    const { token, code } = req.body;
+    const { role, token } = req.params;
+    const { code } = req.body;
 
     if (!token) {
         return res.status(400).json({

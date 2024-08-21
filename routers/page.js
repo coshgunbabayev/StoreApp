@@ -13,7 +13,7 @@ import roleChecking from '../middlewares/role.js';
 router.route('/signup/:role')
     .get(roleChecking, getSignupPage);
 
-router.route('/verification/code/:role')
+router.route('/verification/code/:role/:token')
     .get(roleChecking, getVerificationCodePage);
 
 router.route('/verification/email/:role')

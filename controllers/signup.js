@@ -7,6 +7,7 @@ import {
 } from '../token/create.js';
 
 import {
+    sendEmailForVerificationPage,
     sendEmailForVerificationCode
 } from '../smtp/send.js';
 
@@ -28,10 +29,13 @@ async function createStore(req, res) {
             { new: true }
         );
 
+        const token = storeVerificationToken(store._id);
+
+        await sendEmailForVerificationPage(store.email, token, 'store');
         await sendEmailForVerificationCode(store.email, store.verification.code, 'store');
 
         res.status(201).json({
-            token: storeVerificationToken(store._id)
+            token
         });
     } catch (err) {
         let errors = new Object();

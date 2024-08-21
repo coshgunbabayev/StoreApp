@@ -7,9 +7,6 @@ function setErrors(errors) {
 
 function clearErrors(keys) {
     keys.forEach(function (key) {
-        if (key === 'token') {
-           return;
-        }
         document.getElementById(key).classList.remove('is-invalid');
         document.getElementById(`${key}Error`).innerText = '';
     });

@@ -7,7 +7,7 @@ import {
 
 import roleChecking from '../middlewares/role.js';
 
-router.route('/code/:role')
-    .post(roleChecking, verificationCode)
+router.route('/code/:role/:token')
+    .post(roleChecking, verificationCode);
 
 export default router
