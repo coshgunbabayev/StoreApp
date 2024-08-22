@@ -5,7 +5,7 @@ import User from '../models/user.js';
 
 import {
     verificationToken
-} from '../token/create.js';
+} from '../tools/token.js';
 
 import {
     sendEmailForVerificationPage,
