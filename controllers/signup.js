@@ -35,9 +35,7 @@ async function createStore(req, res) {
         await sendEmailForVerificationPage(store.email, token, 'store');
         await sendEmailForVerificationCode(store.email, store.verification.code, 'store');
 
-        res.status(201).json({
-            token
-        });
+        res.status(201).json({});
     } catch (err) {
         let errors = new Object();
 
@@ -84,9 +82,7 @@ async function createUser(req, res) {
         await sendEmailForVerificationPage(user.email, token, 'user');
         await sendEmailForVerificationCode(user.email, user.verification.code, 'user');
 
-        res.status(201).json({
-            token
-        });
+        res.status(201).json({});
     } catch (err) {
         let errors = new Object();
 
