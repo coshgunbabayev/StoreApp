@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
 
-function storeVerificationToken(id) {
+function verificationToken(id, role) {
     return jwt.sign({
         id,
-        role: 'store'
+        role
     },
         process.env.JWT_SECRET_VERIFICATION, {
         expiresIn: "15m"
@@ -17,6 +17,6 @@ function loginToken(id) {
 };
 
 export {
-    storeVerificationToken,
+    verificationToken,
     loginToken
 };

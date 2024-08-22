@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 import { Schema } from 'mongoose';
 import validator from 'validator';
 
+import { createCode } from '../tools/random.js';
+
 const userSchema = new Schema({
     name: {
         type: String,
@@ -52,6 +54,18 @@ const userSchema = new Schema({
         required: [true, 'Please enter a password'],
         trim: true,
         minlength: [8, 'Password must be at least 8 characters long']
+    },
+
+    verification: {
+        status: {
+            type: Boolean,
+            default: false
+        },
+
+        code: {
+            type: String,
+            default: createCode(6)
+        }
     },
 
     profilePicture: {

@@ -3,6 +3,11 @@ import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
 import Store from '../models/store.js';
 
+const models = {
+    user: User,
+    store: Store
+};
+
 async function verificationCode(req, res) {
     const { role, token } = req.params;
     const { code } = req.body;
@@ -28,10 +33,6 @@ async function verificationCode(req, res) {
         });
     };
 
-    const models = {
-        user: User,
-        store: Store
-    };
     const model = models[role];
 
     const account = await model.findById(decoded.id);
