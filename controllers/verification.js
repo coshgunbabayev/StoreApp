@@ -1,7 +1,16 @@
 import jwt from 'jsonwebtoken';
+import validator from 'validator';
 
 import User from '../models/user.js';
 import Store from '../models/store.js';
+
+import {
+    verificationToken
+} from '../tools/token.js';
+
+import {
+    sendEmailForVerificationPage
+} from '../smtp/send.js';
 
 const models = {
     user: User,
@@ -52,7 +61,7 @@ async function verificationCode(req, res) {
     if (!code) {
         return res.status(400).json({
             errors: {
-                code: 'Verification code is required'
+                code: 'Please enter a verification code'
             }
         });
     };
@@ -72,6 +81,53 @@ async function verificationCode(req, res) {
     res.status(200).json({});
 };
 
+async function verificationEmail(req, res) {
+    const { role } = req.params;
+    const { email } = req.body;
+    
+    if (!email) {
+        return res.status(400).json({
+            errors: {
+                email: 'Please enter an email address'
+            }
+        });
+    };
+
+    if (!validator.isEmail(email)) {
+        return res.status(400).json({
+            errors: {
+                email: 'Please enter a valid email address'
+            }
+        });
+    };
+
+    const model = models[role];
+
+    const account = await model.findOne({ email });
+
+    if (!account) {
+        return res.status(404).json({
+            errors: {
+                email: 'Account not found with this email address'
+            }
+        });
+    };
+
+    if (account.verification.status) {
+        console.log(1);
+        return res.status(400).json({
+            message: 'UserVerified'
+        });
+    };
+
+    const token = verificationToken(account._id, role);
+
+    await sendEmailForVerificationPage(account.email, token, role); 
+
+    res.status(200).json({});
+};
+
 export {
-    verificationCode
+    verificationCode,
+    verificationEmail
 };

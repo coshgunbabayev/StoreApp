@@ -16,7 +16,7 @@ const storeSchema = new Schema({
 
     email: {
         type: String,
-        required: [true, 'Please enter an email'],
+        required: [true, 'Please enter an email address'],
         trim: true,
         unique: true,
         validate: [validator.isEmail, 'Please enter a valid email address']
