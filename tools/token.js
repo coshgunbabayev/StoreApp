@@ -10,13 +10,24 @@ function verificationToken(id, role) {
     });
 };
 
-function loginToken(id) {
-    return jwt.sign({ id }, process.env.JWT_SECRET_LOGIN, {
+function storeLoginToken(id) {
+    return jwt.sign({
+        id
+    }, process.env.JWT_SECRET_STORE_LOGIN, {
+        expiresIn: "30d"
+    });
+};
+
+function userLoginToken(id) {
+    return jwt.sign({
+        id
+    }, process.env.JWT_SECRET_USER_LOGIN, {
         expiresIn: "30d"
     });
 };
 
 export {
     verificationToken,
-    loginToken
+    storeLoginToken,
+    userLoginToken
 };

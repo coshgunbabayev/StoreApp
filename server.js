@@ -7,6 +7,7 @@ import connection from './database/connection.js';
 import pageRouter from './routers/page.js';
 import signupRouter from './routers/signup.js';
 import verificationRouter from './routers/verification.js';
+import loginRouter from './routers/login.js';
 
 dotenv.config();
 const app = express();
@@ -28,3 +29,4 @@ app.listen(port, function () {
 app.use('/', pageRouter);
 app.use('/api/signup', signupRouter);
 app.use('/api/verification', verificationRouter);
+app.use('/api/login', loginRouter);

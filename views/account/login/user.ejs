@@ -26,13 +26,14 @@
 
         </div>
 
-        <form>
+        <form id="form">
             <div class="row gy-2 overflow-hidden">
 
                 <div class="col-12">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" name="username" id="username" placeholder="Username">
                         <label for="username" class="form-label">Username</label>
+                        <div class="fs-6 invalid-feedback" id="usernameError"></div>
                     </div>
                 </div>
 
@@ -41,6 +42,7 @@
                         <input type="password" class="form-control" name="password" id="password"
                             placeholder="Password">
                         <label for="password" class="form-label">Password</label>
+                        <div class="fs-6 invalid-feedback" id="passwordError"></div>
                     </div>
                 </div>
 
@@ -59,6 +61,9 @@
         </form>
 
         <%- include('../partials/sectionClosing') %>
+
+            <script src="/js/form/error.js"></script>
+            <script src="/js/form/signup-verification-login.js"></script>
 </body>
 
 </html>

@@ -114,7 +114,6 @@ async function verificationEmail(req, res) {
     };
 
     if (account.verification.status) {
-        console.log(1);
         return res.status(400).json({
             message: 'UserVerified'
         });

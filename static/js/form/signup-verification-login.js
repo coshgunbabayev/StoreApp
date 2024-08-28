@@ -23,7 +23,6 @@ document.getElementById('form').addEventListener('submit', async function (event
         },
         body: JSON.stringify(formEntries)
     });
-    console.log(res);
 
     if (res.ok) {
         if (path === '/signup/store' || path === '/signup/user') {
@@ -37,7 +36,6 @@ document.getElementById('form').addEventListener('submit', async function (event
         } else if (path.startsWith('/verification/code/user/')) {
             window.location.href = '/login/user';
         } else if (path === '/verification/email/store' || path === '/verification/email/user') {
-            console.log("--------------------------------");
             form.reset();
             generalNotification.innerText = 'A link have been sent to your email for verification.';
             generalNotification.classList.add('alert-success');
