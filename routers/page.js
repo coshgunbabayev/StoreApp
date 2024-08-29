@@ -5,7 +5,8 @@ import {
     getSignupPage,
     getVerificationCodePage,
     getVerificationEmailPage,
-    getLoginPage
+    getLoginPage,
+    getIndexPage
 } from '../controllers/page.js';
 
 import roleChecking from '../middlewares/role.js';
@@ -21,5 +22,8 @@ router.route('/verification/email/:role')
 
 router.route('/login/:role')
     .get(roleChecking, getLoginPage);
+
+router.route('/')
+    .get(getIndexPage);
 
 export default router

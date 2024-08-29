@@ -18,16 +18,11 @@
         <div class="text-center mb-4">
 
             <% if (userRole==='store' ) { %>
-                <button class="btn btn-primary btn-sm me-2" onclick="window.location.href='/verification/email/store'">
-                    Store account</button>
-                <button class="btn btn-secondary btn-sm" onclick="window.location.href='/verification/email/user'">
-                    User account</button>
+                <a href="/verification/email/store" class="btn btn-primary btn-sm me-2">Store account</a>
+                <a href="/verification/email/user" class="btn btn-secondary btn-sm">User account</a>
                 <% } else if (userRole==='user' ) { %>
-                    <button class="btn btn-secondary btn-sm me-2"
-                        onclick="window.location.href='/verification/email/store'">
-                        Store account</button>
-                    <button class="btn btn-primary btn-sm" onclick="window.location.href='/verification/email/user'">
-                        User account</button>
+                    <a href="/verification/email/store" class="btn btn-secondary btn-sm me-2">Store account</a>
+                    <a href="/verification/email/user" class="btn btn-primary btn-sm">User account</a>
                     <% } %>
 
         </div>

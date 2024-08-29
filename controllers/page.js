@@ -3,9 +3,7 @@ function getSignupPage(req, res) {
 };
 
 function getVerificationCodePage(req, res) {
-    res.status(200).render('account/verification/code', {
-        userRole: req.params.role
-    });
+    res.status(200).render('account/verification/code');
 };
 
 function getVerificationEmailPage(req, res) {
@@ -18,9 +16,14 @@ function getLoginPage(req, res) {
     res.status(200).render(`account/login/${req.params.role}`);
 };
 
+function getIndexPage(req, res) {
+    res.status(200).render('pages/index');
+};
+
 export {
     getSignupPage,
     getVerificationCodePage,
     getVerificationEmailPage,
     getLoginPage,
+    getIndexPage
 };
