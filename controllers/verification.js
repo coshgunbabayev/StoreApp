@@ -13,8 +13,8 @@ import {
 } from '../smtp/send.js';
 
 const models = {
-    user: User,
-    store: Store
+    store: Store,
+    user: User
 };
 
 async function verificationCode(req, res) {

@@ -1,0 +1,43 @@
+{
+    "categories": [
+        {
+            "name": "Electronics"
+        },
+        {
+            "name": "Clothing"
+        },
+        {
+            "name": "Books"
+        },
+        {
+            "name": "Home & Garden"
+        },
+        {
+            "name": "Sports & Outdoors"
+        },
+        {
+            "name": "Beauty & Health"
+        },
+        {
+            "name": "Toys & Games"
+        },
+        {
+            "name": "Gifts & Cards"
+        },
+        {
+            "name": "Services"
+        },
+        {
+            "name": "Music"
+        },
+        {
+            "name": "Travel & Luxury"
+        },
+        {
+            "name": "Pet Supplies"
+        },
+        {
+            "name": "Business & Industrial"
+        }
+    ]
+}

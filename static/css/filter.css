@@ -1,0 +1,28 @@
+.filter-btn-div {
+    display: none;
+}
+
+.filter-btn-div button {
+    min-width: 30%;
+}
+
+.filter-section {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-right: 1px solid #ddd;
+    height: 100vh;
+}
+
+@media (max-width: 768px) {
+    .filter-btn-div {
+        display: block;
+    }
+
+    .filter-section {
+        display: none;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+        height: auto;
+        position: relative;
+    }
+}
