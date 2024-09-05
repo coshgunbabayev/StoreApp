@@ -6,10 +6,15 @@ import {
     getVerificationCodePage,
     getVerificationEmailPage,
     getLoginPage,
-    getIndexPage
+    getIndexPage,
+    getDashboardPage
 } from '../controllers/page.js';
 
 import roleChecking from '../middlewares/role.js';
+
+import {
+    storeAuthenticateForPage
+} from '../middlewares/auth.js';
 
 router.route('/signup/:role')
     .get(roleChecking, getSignupPage);
@@ -25,5 +30,8 @@ router.route('/login/:role')
 
 router.route('/')
     .get(getIndexPage);
+
+router.route('/dashboard')
+    .get(storeAuthenticateForPage, getDashboardPage);
 
 export default router

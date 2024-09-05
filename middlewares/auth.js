@@ -8,11 +8,6 @@ const models = {
     user: User
 };
 
-const secrets = {
-    store: process.env.JWT_SECRET_STORE_LOGIN,
-    user: process.env.JWT_SECRET_USER_LOGIN
-};
-
 async function commonAuthenticateForPage(req, res, next) {
 
 };
@@ -29,11 +24,9 @@ async function commonAuthenticateForApi(req, res, next) {
         res.clearCookie('storeAuthToken');
         res.clearCookie('userAuthToken');
 
-        if (!token) {
-            return res.status(400).json({
-                message: 'AccountNotAuthenticated'
-            });
-        };
+        return res.status(400).json({
+            message: 'AccountNotAuthenticated'
+        });
     } else if (req.cookies.storeAuthToken) {
         token = req.cookies.storeAuthToken;
         role = 'store';
@@ -57,7 +50,10 @@ async function commonAuthenticateForApi(req, res, next) {
 
     let account;
     try {
-        account = await models[role].findById(decoded.id);
+        account = await models[role].findOne({
+            _id: decoded.id,
+            'verification.status': true
+        });
     } catch (err) {
         return res.status(400).json({
             message: 'AccountNotAuthenticated'
@@ -76,7 +72,34 @@ async function commonAuthenticateForApi(req, res, next) {
 };
 
 async function storeAuthenticateForPage(req, res, next) {
+    const storeAuthToken = req.cookies.storeAuthToken;
 
+    if (!storeAuthToken) {
+        return res.redirect('/login/store');
+    };
+
+    let decoded;
+    try {
+        decoded = jwt.verify(storeAuthToken, process.env.JWT_SECRET_STORE_LOGIN);
+    } catch (err) {
+        return res.redirect('/login/store');
+    };
+
+    let store;
+    try {
+        store = await Store.findOne({
+            _id: decoded.id,
+            'verification.status': true
+        });;
+    } catch (err) {
+        return res.redirect('/login/store');
+    };
+
+    if (!store) {
+        return res.redirect('/login/store');
+    };
+
+    next();
 };
 
 async function storeAuthenticateForApi(req, res, next) {
@@ -84,7 +107,34 @@ async function storeAuthenticateForApi(req, res, next) {
 };
 
 async function userAuthenticateForPage(req, res, next) {
+    const userAuthToken = req.cookies.userAuthToken;
 
+    if (!userAuthToken) {
+        return res.redirect('/login/user');
+    };
+
+    let decoded;
+    try {
+        decoded = jwt.verify(userAuthToken, process.env.JWT_SECRET_USER_LOGIN);
+    } catch (err) {
+        return res.redirect('/login/user');
+    };
+
+    let user;
+    try {
+        user = await User.findOne({
+            _id: decoded.id,
+            'verification.status': true
+        });
+    } catch (err) {
+        return res.redirect('/login/user');
+    };
+
+    if (!user) {
+        return res.redirect('/login/user');
+    };
+
+    next();
 };
 
 async function userAuthenticateForApi(req, res, next) {
@@ -99,37 +149,3 @@ export {
     userAuthenticateForPage,
     userAuthenticateForApi,
 };
-
-// async function authenticateForPage(req, res, next) {
-//     const { token } = req.cookies;
-
-//     if (!token) {
-//         return res.redirect('/account');
-//     };
-
-//     let decoded;
-//     try {
-//         decoded = jwt.verify(token, process.env.JWT_SECRET);
-//     } catch (err) {
-//         return res.redirect('/account');
-//     };
-
-//     let user;
-//     try {
-//         user = await User.findById(decoded.userId);
-//     } catch (err) {
-//         return res.redirect('/account');
-//     }
-
-//     if (!user) {
-//         return res.redirect('/account');
-//     };
-
-//     res.locals.user = user;
-//     next();
-// };
-
-// export {
-//     authenticateForApi,
-//     authenticateForPage,
-// };

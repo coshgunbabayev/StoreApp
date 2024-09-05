@@ -20,10 +20,15 @@ function getIndexPage(req, res) {
     res.status(200).render('pages/index');
 };
 
+function getDashboardPage(req, res) {
+    res.status(200).render('pages/store/dashboard');
+};
+
 export {
     getSignupPage,
     getVerificationCodePage,
     getVerificationEmailPage,
     getLoginPage,
-    getIndexPage
+    getIndexPage,
+    getDashboardPage
 };
